@@ -66,10 +66,10 @@
 
         // Get the user ID from the query parameter
         const urlParams = new URLSearchParams(window.location.search);
-        const userId = urlParams.get('username');
+        const userId = urlParams.get('userId'); // Changed to 'userId'
 
         if (!userId) {
-            errorMessageDiv.textContent = "Error: No username provided.";
+            errorMessageDiv.textContent = "Error: No user ID provided.";
             errorMessageDiv.classList.remove('hidden');
         } else {
             const apiUrl = `https://api.sleeper.app/v1/user/${userId}/leagues/NFL/2025`;
@@ -90,7 +90,7 @@
                                 <p>League ID: ${league.league_id}</p>
                                 <p>Total Rosters: ${league.total_rosters}</p>
                                 <p>Season: ${league.season}</p>
-                                // Add more league details here as needed
+                                 Add more league details here as needed
                             </div>
                         `).join('');
                     } else {
