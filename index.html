@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleeper API Query</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> </head>
+<body class="bg-gray-800 text-gray-50">
+    <div class="container">
+        <h1>EXPERIENCE</h1>
+        <h2>THE FANTASY EFFECT</h2>
+        <input type="text" id="sleeper-username" placeholder="Sleeper Username" class="mb-4">
+        <button id="go-button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Go</button>
+        <div id="user-data" class="mt-8 hidden"></div>
+        <div id="error-message" class="mt-8 hidden"></div>
+    </div>
+
+    <script>
+        const usernameInput = document.getElementById('sleeper-username');
+        const goButton = document.getElementById('go-button');
+        const userDataDiv = document.getElementById('user-data');
+        const errorMessageDiv = document.getElementById('error-message');
+
+        goButton.addEventListener('click', () => {
+            const username = usernameInput.value.trim();
+            if (username === "") {
+                errorMessageDiv.textContent = "Please enter a Sleeper username.";
+                errorMessageDiv.classList.remove('hidden');
+                userDataDiv.classList.add('hidden');
+                return;
+            }
+            errorMessageDiv.classList.add('hidden');
+            const apiUrl = `https://api.sleeper.app/v1/user/${username}`;
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data) {
+                        userDataDiv.textContent = JSON.stringify(data, null, 2);
+                        userDataDiv.classList.remove('hidden');
+                    } else {
+                        errorMessageDiv.textContent = "User not found. Please check the username and try again.";
+                        errorMessageDiv.classList.remove('hidden');
+                        userDataDiv.classList.add('hidden');
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                    errorMessageDiv.textContent = `Error: ${error.message}`;
+                    errorMessageDiv.classList.remove('hidden');
+                    userDataDiv.classList.add('hidden');
+                });
+        });
+    </script>
+</body>
+</html>
