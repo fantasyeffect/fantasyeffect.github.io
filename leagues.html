@@ -72,7 +72,7 @@
             errorMessageDiv.textContent = "Error: No user ID provided.";
             errorMessageDiv.classList.remove('hidden');
         } else {
-            const apiUrl = `https://api.sleeper.app/v1/user/${userId}/leagues/NFL/2025`;
+            const apiUrl = `https://api.sleeper.app/v1/user/${userId}/leagues/nfl/2025`;
 
             fetch(apiUrl)
                 .then(response => {
