@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Fantasy Effect</title>
+    <title>Sleeper API Query</title>
     <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"> </head>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body class="bg-gray-800 text-gray-50">
     <div class="container">
         <h1>EXPERIENCE</h1>
@@ -31,32 +32,8 @@
                 userDataDiv.classList.add('hidden');
                 return;
             }
-            errorMessageDiv.classList.add('hidden');
-            const apiUrl = `https://api.sleeper.app/v1/user/${username}`;
-
-            fetch(apiUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data) {
-                        userDataDiv.textContent = JSON.stringify(data, null, 2);
-                        userDataDiv.classList.remove('hidden');
-                    } else {
-                        errorMessageDiv.textContent = "User not found. Please check the username and try again.";
-                        errorMessageDiv.classList.remove('hidden');
-                        userDataDiv.classList.add('hidden');
-                    }
-                })
-                .catch(error => {
-                    console.error("Error fetching data:", error);
-                    errorMessageDiv.textContent = `Error: ${error.message}`;
-                    errorMessageDiv.classList.remove('hidden');
-                    userDataDiv.classList.add('hidden');
-                });
+            // Redirect to leagues.html, passing the username as a query parameter
+            window.location.href = `leagues.html?username=${encodeURIComponent(username)}`;
         });
     </script>
 </body>
