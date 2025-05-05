@@ -16,21 +16,21 @@ h1 {
     font-size: 2.25rem; /* Larger heading */
     font-weight: bold;
     margin-bottom: 1.5rem; /* Increased margin */
-    color: #f56565; /* Red color for "EXPERIENCE" */
+    color: #ffffff; /* Red color for "EXPERIENCE" */
 }
 h2 {
     font-size: 1.5rem; /* Larger subheading */
     margin-bottom: 2rem; /* Increased margin */
-    color: #48bb78; /* Green color for "THE FANTASY EFFECT" */
+    color: #00ff66; /* Green color for "THE FANTASY EFFECT" */
 }
 input[type="text"] {
     width: 100%; /* Full width */
     padding: 0.75rem; /* Increased padding */
     margin-bottom: 1.5rem; /* Increased margin */
     border-radius: 0.375rem; /* Rounded corners */
-    border: 1px solid #4a5568; /* Darker border */
-    background-color: #edf2f7; /* Light background for input */
-    color: #2d3748; /* Dark text color */
+    border: 1px solid #00ff66; /* Darker border */
+    background-color: #ffffff; /* Light background for input */
+    color: #333333; /* Dark text color */
     font-size: 1rem; /* Increased font size */
     transition: border-color 0.2s ease; /* Smooth transition */
 }
